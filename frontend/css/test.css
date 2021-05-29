@@ -1,0 +1,139 @@
+body {
+    background: #17161d;
+}
+
+.navbar {
+    background: #211f27;
+}
+
+.navbar-brand {
+    color: #f6f5fa;
+}
+
+.navbar-toggler-icon {
+    color: #f6f5fa;
+}
+
+.nav-link {
+    color: #f6f5fa;
+}
+
+#user-login {
+    color: #f6f5fa;
+}
+
+.card {
+    background: #211f27;
+}
+
+.card-title {
+    color: #f6f5fa;
+}
+
+.card-text {
+    color: #d9d9d9;
+}
+
+.main {
+    margin-top: 2rem;
+}
+
+.create-link {
+    background: #02af74;
+    border-radius: 5px;
+    border: none;
+    color: #f6f5fa;
+    padding: .3rem .6rem .3rem .6rem;
+}
+
+.delete-link {
+    margin-left: 1rem;
+    background: #cd4b4e;
+    border-radius: 5px;
+    border: none;
+    color: #f6f5fa;
+    padding: .3rem .6rem .3rem .6rem;
+}
+
+.edit-link {
+    background: #f9a43d;
+    border-radius: 5px;
+    border: none;
+    margin-left: 1rem;
+    color: #f6f5fa;
+    padding: .3rem .6rem .3rem .6rem;
+}
+
+.stats-link {
+    background: #3d7cf9;
+    border-radius: 5px;
+    border: none;
+    margin-left: 1rem;
+    color: #f6f5fa;
+    padding: .3rem .6rem .3rem .6rem;
+}
+
+.id-input {
+    width: 20%;
+    height: 2.2rem;
+    border-radius: 5px;
+}
+
+.offcanvas-body {
+    background: #211f27;
+}
+
+.links {
+    background: #f6f5fa;
+    border-radius: 5px;
+    /*color: #f6f5fa;*/
+    padding: 1rem;
+}
+
+#userLinks {
+    width: 100%;
+}
+
+.link-container {
+    margin-top: 2rem;
+}
+
+.link-input {
+    width: 100%;
+    background: #312d39;
+    color: #f6f5fa;
+    border-radius: 5px;
+    border: none;
+    height: 2rem;
+    padding: .3rem .6rem .3rem .6rem;
+}
+
+.link-input:focus {
+    border-radius: 5px;
+    border: none;
+}
+
+.link-input-text {
+    color: #f6f5fa;
+}
+
+.busy {
+    color: #cd4b4e;
+}
+
+.dropdown-menu {
+    background: #211f27;
+}
+.dropdown-item {
+    color: #f6f5fa;
+}
+
+/*
+211f27 - окна
+17161d - bg
+02af74 - green
+f9523d - orange
+cd4b4e - red
+f6f5fa - white
+4b4951 - gray
+*/

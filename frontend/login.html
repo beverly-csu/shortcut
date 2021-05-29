@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Авторизация | ShortCut</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+</head>
+<body class="text-center">
+
+<main class="form-signin">
+    <form action="javascript:user_auth()">
+        <img class="mb-4" src="widelogo.png" style="width: 100%; border-radius: 5px">
+        <div class="alert alert-danger" role="alert" style="display: none" id="error">
+            Введены неверные данные!
+        </div>
+        <div class="alert alert-danger" role="alert" style="display: none" id="success">
+            Вход выполнен успешно. Вы будете перенаправлены на панель управления.
+        </div>
+        <h1 class="h3 mb-3">С возвращением</h1>
+        <div class="form-floating" style="color: #000;">
+            <input type="text" class="form-control" id="auth_login" placeholder="name@example.com" required>
+            <label for="auth_login">Логин</label>
+        </div>
+        <div class="form-floating" style="color: #000;">
+            <input type="password" class="form-control" id="auth_password" placeholder="Пароль" required>
+            <label for="auth_password">Пароль</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
+        <small>Еще не зарегистрированы? <a href="reg.html" style="text-decoration:none;">Зарегистрироваться</a></small>
+    </form>
+</main>
+
+<script src="js/jquery.js"></script>
+<script src="js/cookie.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

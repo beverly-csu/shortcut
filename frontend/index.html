@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заголовок</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.83.1">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/test.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+    <script src="https://kit.fontawesome.com/e05781c6bd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+            ShortCut
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Статистика</a>
+                </li>
+            </ul>
+        </div>
+        <div class="d-flex dropdown">
+            <button role="button" type="button" class="btn" data-toggle="dropdown" id="user-login"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                John Doe
+            </button>
+            <div class="dropdown-menu" aria-labelledby="user-login">
+                <a class="dropdown-item" href="profile.html"><i class="fas fa-user-alt"></i> Профиль</a>
+                <button class="dropdown-item" onclick="logout()" style="color: #cd4b4e;"><i
+                        class="fas fa-sign-out-alt"></i> Выход
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container main">
+    <div class="row row-cols-md-4 g-4">
+        <div class="col-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Создание ссылки</h5>
+                    <p class="card-text">Мы можете создать ссылки с любым свободным коротким адресом.</p>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="create-link" data-bs-toggle="offcanvas"
+                            data-bs-target="#createLinkCanvas" aria-controls="offcanvasRight"><i
+                            class="fas fa-plus-square"></i> Создать
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Удаление ссылки</h5>
+                    <p class="card-text">Мы можете удалить ссылку, зная ее ID.</p>
+                </div>
+                <div class="card-footer">
+                    <input type="number" class="id-input" placeholder="ID" id="deleteID">
+                    <button type="button" class="delete-link" onclick="delete_link()"><i class="fas fa-trash"></i>
+                        Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Изменение ссылки</h5>
+                    <p class="card-text">Мы можете изменить ссылку, зная ее ID.</p>
+                </div>
+                <div class="card-footer">
+                    <input type="number" placeholder="ID" class="id-input" id="updateID">
+                    <button type="button" onclick="update_info()" class="edit-link" data-bs-toggle="offcanvas"
+                            data-bs-target="#updateLinkCanvas" aria-controls="offcanvasRight"><i
+                            class="fas fa-edit"></i> Изменить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Статистика ссылки</h5>
+                    <p class="card-text">Мы можете создать ссылки с любым свободным коротким адресом.</p>
+                </div>
+                <div class="card-footer">
+                    <input type="number" placeholder="ID" class="id-input" id="statsID">
+                    <button class="stats-link" onclick="update_stats()" data-bs-toggle="modal"
+                            data-bs-target="#statsModal"><i class="fas fa-chart-line"></i> Статистика
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container link-container">
+    <div class="links">
+        <h5>Ваши ссылки</h5>
+        <table class="table table-striped table-bordered" id="userLinks">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Заголовок</th>
+                <th scope="col">Полная ссылка</th>
+                <th scope="col">Укороченная ссылка</th>
+                <th scope="col">Дата создания</th>
+                <th scope="col">Доступ</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="createLinkCanvas" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel">Создание ссылки</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form action="javascript:create_link()">
+            <span class="link-input-text">Полная ссылка:</span>
+            <input type="text" class="link-input" id="createFullUrl" required>
+            <span class="link-input-text">Короткая ссылка:</span>
+            <input type="text" class="link-input" id="createShortUrl" maxlength="32" minlength="4" required>
+            <span class="link-input-text">Заголовок:</span>
+            <input type="text" class="link-input" id="createTitle" disabled required>
+            <span class="link-input-text">Настройка доступа к ссылке:</span>
+            <select id="createAccess" class="link-input" required>
+                <option value="public">Публичный доступ</option>
+                <option value="authorized">Доступ только для пользователей сайта</option>
+                <option value="self">Доступ только для меня</option>
+            </select>
+            <input type="hidden" id="createSecret" value="none">
+            <input id="createSubmit" type="submit" class="create-link" value="Создать ссылку"
+                   style="margin-top: .5rem;">
+        </form>
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="updateLinkCanvas" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLab">Обновление ссылки</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form action="javascript:update_link()">
+            <span class="link-input-text">Полная ссылка:</span>
+            <input type="text" class="link-input" id="updateFullUrl" required>
+            <span class="link-input-text">Короткая ссылка:</span>
+            <input type="text" class="link-input" id="updateShortUrl" maxlength="32" minlength="4" required>
+            <span class="link-input-text">Заголовок:</span>
+            <input type="text" class="link-input" id="updateTitle" disabled required>
+            <span class="link-input-text">Настройка доступа к ссылке:</span>
+            <select id="updateAccess" class="link-input" required>
+                <option value="public">Публичный доступ</option>
+                <option value="authorized">Доступ только для пользователей сайта</option>
+                <option value="self">Доступ только для меня</option>
+            </select>
+            <input type="hidden" id="updateSecret" value="none">
+            <input id="updateSubmit" type="submit" class="edit-link" value="Обновить ссылку" style="margin-top: .5rem;">
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="statsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Статистика</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <canvas id="statsChart" width="800" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/cookie.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.0/dist/chart.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script>
+<script src="js/core.js"></script>
+<script src="js/logout.js"></script>
+
+<script>
+    var ctx = document.getElementById('statsChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'Переходы в определенный день',
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(161,255,102,0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgb(147,255,105)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

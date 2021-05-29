@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Регистрация | ShortCut</title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/signin.css" rel="stylesheet">
+</head>
+<body class="text-center">
+
+<main class="form-signin">
+  <form action="javascript:user_reg()">
+    <img class="mb-4" src="widelogo.png" style="width: 100%; border-radius: 5px">
+    <div class="alert alert-danger" role="alert" style="display: none" id="error">
+      Попробуйте заного, произошла ошибка!
+    </div>
+    <div class="alert alert-danger" role="alert" style="display: none" id="success">
+      Регистрация выполнена успешно. Вы будете перенаправлены на страницу авторизации.
+    </div>
+    <h1 class="h3 mb-3">Регистрация</h1>
+    <div class="form-floating" style="color: #000;">
+      <input type="text" class="form-control" id="reg_login" placeholder="name@example.com" required>
+      <label for="reg_login">Логин</label>
+    </div>
+    <div class="form-floating" style="color: #000;">
+      <input type="email" class="form-control" id="reg_email" placeholder="Пароль" required>
+      <label for="reg_email">Email</label>
+    </div>
+    <div class="form-floating" style="color: #000;">
+      <input type="text" class="form-control" id="reg_name" placeholder="Пароль" required>
+      <label for="reg_name">Имя</label>
+    </div>
+    <div class="form-floating" style="color: #000;">
+      <input type="text" class="form-control" id="reg_surname" placeholder="Пароль" required>
+      <label for="reg_surname">Фамилия</label>
+    </div>
+    <div class="form-floating" style="color: #000;">
+      <input type="password" class="form-control" id="reg_password" placeholder="Пароль" required>
+      <label for="reg_password">Пароль</label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" id="reg_submit">Зарегистрироваться</button>
+    <small>Уже зарегистрированы? <a href="login.html" style="text-decoration:none;">Войти</a></small>
+  </form>
+</main>
+
+<script src="js/jquery.js"></script>
+<script src="js/cookie.js"></script>
+<script src="js/reg.js"></script>
+</body>
+</html>
